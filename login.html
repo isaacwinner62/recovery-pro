@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Scam Recovery Pro</title>
+    <link rel="stylesheet" href="css/auth.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="auth-left">
+        <h2>"The first step to recovery is taking action."</h2>
+        <p>Thousands have started their recovery journey with us.</p>
+        <a href="index.html" class="btn-outline">← Back to Home</a>
+      </div>
+      <div class="auth-right">
+        <h1>Login to Your Account</h1>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="example@gmail.com"
+              required
+            />
+            <div class="error-message" id="emailError"></div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="**********"
+              required
+            />
+            <div class="error-message" id="passwordError"></div>
+          </div>
+          <button type="submit" class="btn-primary">Login</button>
+          <div class="auth-links">
+            <!-- <a href="#">Forgot Password?</a> -->
+            <span
+              >Don't have an account? <a href="signup.html">Sign up</a></span
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
