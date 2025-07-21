@@ -406,7 +406,88 @@ body {
   letter-spacing: 1px;
   background: rgba(255, 82, 82, 0.08);
   border-radius: 8px;
-  
+
   box-shadow: 0 2px 8px rgba(255, 82, 82, 0.1);
   display: inline-block;
+}
+
+.btc-wallet-section {
+  margin: 32px 0;
+  padding: 24px;
+  background: #f7f7fa;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+#btcWalletDisplay {
+  font-family: monospace;
+  font-size: 1.1em;
+  background: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  margin-right: 10px;
+  user-select: all;
+}
+#copyWalletBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  display: flex;
+  align-items: center;
+}
+#copyWalletBtn img {
+  width: 30px;
+  height: 30px;
+}
+#toast {
+  display: none;
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 1.1em;
+  z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 600px) {
+  .btc-wallet-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 14px 8px;
+    margin: 18px 0;
+  }
+  #btcWalletDisplay {
+    font-size: 0.98em;
+    padding: 7px 8px;
+    margin-right: 0;
+    margin-bottom: 6px;
+    word-break: break-all;
+  }
+  #copyWalletBtn {
+    justify-content: flex-start;
+  }
+  #copyWalletBtn img {
+    width: 26px;
+    height: 26px;
+  }
+  #toast {
+    font-size: 1em;
+    padding: 10px 16px;
+    bottom: 16px;
+    left: 50%;
+    max-width: 90vw;
+    box-sizing: border-box;
+  }
 }

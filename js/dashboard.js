@@ -118,4 +118,67 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     });
   });
+
+  // BTC Wallet Copy Functionality
+  const btcWalletDisplay = document.getElementById("btcWalletDisplay");
+  const copyWalletBtn = document.getElementById("copyWalletBtn");
+  const copyWalletImg = document.getElementById("copyWalletImg");
+  const toast = document.getElementById("toast");
+
+  function copyWalletToClipboard(e) {
+    if (e) e.stopPropagation();
+    if (!btcWalletDisplay) {
+      console.log("btcWalletDisplay not found");
+      return;
+    }
+    if (!toast) {
+      console.log("toast not found");
+      return;
+    }
+    const wallet = btcWalletDisplay.textContent;
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(wallet).then(
+        function () {
+          toast.textContent = "Wallet address copied!";
+          toast.style.display = "block";
+          setTimeout(() => {
+            toast.style.display = "none";
+          }, 2000);
+        },
+        function (err) {
+          console.log("Clipboard error", err);
+        }
+      );
+    } else {
+      // fallback for insecure context or older browsers
+      const textarea = document.createElement("textarea");
+      textarea.value = wallet;
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand("copy");
+        toast.textContent = "Wallet address copied!";
+        toast.style.display = "block";
+        setTimeout(() => {
+          toast.style.display = "none";
+        }, 2000);
+      } catch (err) {
+        console.log("Fallback copy failed", err);
+      }
+      document.body.removeChild(textarea);
+    }
+  }
+
+  if (btcWalletDisplay && copyWalletBtn && toast) {
+    copyWalletBtn.addEventListener("click", copyWalletToClipboard);
+    console.log("copyWalletBtn event attached");
+  } else {
+    console.log("copyWalletBtn or btcWalletDisplay or toast missing");
+  }
+  if (copyWalletImg) {
+    copyWalletImg.addEventListener("click", copyWalletToClipboard);
+    console.log("copyWalletImg event attached");
+  } else {
+    console.log("copyWalletImg missing");
+  }
 });

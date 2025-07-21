@@ -40,7 +40,7 @@
 
       <main class="main-content">
         <header class="dashboard-header">
-          <h1>Welcome, <span id="userName">User</span></h1>
+          <h1>Welcome,<span style="color: rgb(150, 150, 255);"></span> <span id="userName"> User</span></span></h1>
         </header>
 
         <div class="summary-cards">
@@ -57,13 +57,90 @@
           <div class="summary-card">
             <div class="card-icon">🛡️</div>
             <h3>Recovery Officer</h3>
-            <p id="officerDisplay">Awaiting Assignment</p>
+            <p id="officerDisplay">Awaiting <span style="color: rgb(150, 150, 255);">Assignment</span></p>
           </div>
+        </div>
+
+        <div
+          class="btc-wallet-section"
+          style="
+            margin: 32px 0;
+            padding: 24px;
+            background: #717176;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+          "
+        >
+          <div
+            style="
+              font-weight: 600;
+              font-size: 1.1em;
+              color: #f4f4f4;
+              min-width: 140px;
+            "
+          >
+            BTC Wallet <span style="color: rgb(150, 150, 255);">Address</span>:
+          </div>
+          <div
+            id="btcWalletDisplay"
+            style="
+              font-family: monospace;
+              font-size: 1.1em;
+              background: #94989a;
+              padding: 8px 14px;
+              border-radius: 6px;
+              border: 1px solid #e0e0e0;
+              margin-right: 10px;
+              user-select: all;
+              color: black;
+            "
+          >
+            bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh
+          </div>
+          <button
+            id="copyWalletBtn"
+            style="
+              background: none;
+              border: none;
+              cursor: pointer;
+              padding: 0;
+              margin: 0;
+              outline: none;
+              display: flex;
+              align-items: center;
+            "
+            title="Copy Wallet Address"
+          >
+            <img id="copyWalletImg" src="copy.png" alt="Copy" style="width: 30px; height: 30px; color: blue;" />
+          </button>
+        <div>Recovery Wallet Address.</div>
+        </div>
+        <div
+          id="toast"
+          style="
+            display: none;
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #222;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            z-index: 9999;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+          "
+        >
+          Wallet address copied!
         </div>
 
         <div class="action-card">
           <h2>Next Steps</h2>
-          <p>
+          <p style="color: hsl(217, 100%, 93%);">
             To continue, please deposit the recovery fee. This fee covers our
             initial investigation and case assignment.
           </p>
@@ -74,16 +151,20 @@
 
         <div class="admin-contact">
           <div class="admin-profile">
-            <img src="https://res.cloudinary.com/dkfmaqtpy/image/upload/v1743897261/johndoe_nvnfch.jpg" alt="Admin Profile" />
+            <img
+              src="https://res.cloudinary.com/dkfmaqtpy/image/upload/v1743897261/johndoe_nvnfch.jpg"
+              alt="Admin Profile"
+            />
             <div class="admin-info">
               <h3>Your Case Manager</h3>
               <p id="caseManager">Not yet assigned</p>
             </div>
           </div>
           <div class="contact-methods">
-            <a href="#" class="contact-btn telegram"
-              ><i class="fab fa-telegram-plane"></i> Telegram</a
-            >
+            <a href="https://t.me/sunnywayne125" class="contact-btn telegram">
+              <i class="fab fa-telegram-plane"></i> Telegram
+            </a>
+
             <a href="#" class="contact-btn email"
               ><i class="fas fa-envelope"></i> Email</a
             >
@@ -92,12 +173,10 @@
 
         <div class="notice-box">
           <p>
-            <strong>Notice:</strong> 
+            <strong>Notice:</strong>
             <!-- We do not guarantee refunds.  -->
-            We provide
-            professional assistance in recovery attempts. 
-            Always remain cautious
-            of impersonators claiming to be our staff.
+            We provide professional assistance in recovery attempts. Always
+            remain cautious of impersonators claiming to be our staff.
           </p>
         </div>
       </main>
@@ -107,15 +186,26 @@
       <div class="modal-content">
         <span class="close-modal">&times;</span>
         <h2>Deposit Recovery Fee</h2>
-        <p>Please make a transfer of $10,000 to the account below:</p>
+        <p>Please make a transfer of $10,000 to the Wallet below:</p>
         <div class="account-details">
-          <p><strong>Bank:</strong> Wells fargo Bank</p>
-          <p><strong>Account Name:</strong> Scam Recovery Pro Ltd</p>
-          <p><strong>Account Number:</strong> 0023564290</p>
+          <p><strong>BTC:</strong>
+            <div id="modalBtcWalletDisplay" style="width: 100%; flex-wrap: wrap; display: flex; font-family: monospace; font-size: 1.05em; background: #94989a; padding: 7px 10px; border-radius: 6px; border: 1px solid #e0e0e0; color: black; word-break: break-all; align-items: center;">
+            bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh
+            </div>
+          </p>
+          <p>
+            <button id="modalCopyWalletBtn" style="background: none; border: none; cursor: pointer; padding: 0; margin: 0; outline: none; display: flex; align-items: center;" title="Copy Wallet Address">
+              <img id="modalCopyWalletImg" src="copy.png" alt="Copy" style="width: 30px; height: 30px; color: blue;" />
+            </button>
+            <!-- <span style="margin-left: 8px; font-size: 0.98em; color: #333;">Copy Wallet</span> -->
+          </p>
+          <div id="modalToast" style="display: none; position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%); background: #222; color: #fff; padding: 12px 22px; border-radius: 8px; font-size: 1em; z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.12);">Wallet address copied!</div>
         </div>
         <p>After payment, upload your receipt:</p>
         <input type="file" id="receiptUpload" />
         <button class="btn-primary" id="submitReceipt">Submit Receipt</button>
+          <p><strong>RecoveryPro</strong></p>
+
       </div>
     </div>
 
@@ -141,6 +231,72 @@
           }
         }
       });
+      // BTC Wallet Copy Functionality
+      function randomBTCWallet() {
+        // Generates a random (fake) bech32 BTC address (bc1...)
+        const charset = "qpzry9x8gf2tvdw0s3jn54khce6mua7l";
+        let addr = "bc1q";
+        for (let i = 0; i < 39; i++)
+          addr += charset[Math.floor(Math.random() * charset.length)];
+        return addr;
+      }
+      const btcWalletDisplay = document.getElementById("btcWalletDisplay");
+      btcWalletDisplay.textContent = randomBTCWallet();
+      const copyWalletBtn = document.getElementById("copyWalletBtn");
+      const copyWalletImg = document.getElementById("copyWalletImg");
+      const toast = document.getElementById("toast");
+      function copyWalletToClipboard() {
+        const wallet = btcWalletDisplay.textContent;
+        navigator.clipboard.writeText(wallet).then(function () {
+          toast.textContent = "Wallet address copied!";
+          toast.style.display = "block";
+          setTimeout(() => {
+            toast.style.display = "none";
+          }, 2000);
+        });
+      }
+      copyWalletBtn.addEventListener("click", copyWalletToClipboard);
+      if (copyWalletImg) copyWalletImg.addEventListener("click", function(e) {
+        e.stopPropagation();
+        copyWalletToClipboard();
+      });
+
+      // Modal BTC Wallet Copy Functionality
+      const modalBtcWalletDisplay = document.getElementById("modalBtcWalletDisplay");
+      const modalCopyWalletBtn = document.getElementById("modalCopyWalletBtn");
+      const modalCopyWalletImg = document.getElementById("modalCopyWalletImg");
+      const modalToast = document.getElementById("modalToast");
+      function modalCopyWalletToClipboard(e) {
+        if (e) e.stopPropagation();
+        if (!modalBtcWalletDisplay) { console.log('modalBtcWalletDisplay not found'); return; }
+        if (!modalToast) { console.log('modalToast not found'); return; }
+        const wallet = modalBtcWalletDisplay.textContent;
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(wallet).then(function () {
+            modalToast.textContent = "Wallet address copied!";
+            modalToast.style.display = "block";
+            setTimeout(() => { modalToast.style.display = "none"; }, 2000);
+          }, function(err) { console.log('Clipboard error', err); });
+        } else {
+          const textarea = document.createElement('textarea');
+          textarea.value = wallet;
+          document.body.appendChild(textarea);
+          textarea.select();
+          try {
+            document.execCommand('copy');
+            modalToast.textContent = "Wallet address copied!";
+            modalToast.style.display = "block";
+            setTimeout(() => { modalToast.style.display = "none"; }, 2000);
+          } catch (err) { console.log('Fallback copy failed', err); }
+          document.body.removeChild(textarea);
+        }
+      }
+      if (modalBtcWalletDisplay && modalCopyWalletBtn && modalToast) {
+        modalCopyWalletBtn.addEventListener("click", modalCopyWalletToClipboard);
+      }
+      if (modalCopyWalletImg) {
+        modalCopyWalletImg.addEventListener("click", modalCopyWalletToClipboard);
+      }
     </script>
   </body>
 </html>
